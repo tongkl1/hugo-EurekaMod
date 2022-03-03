@@ -7,6 +7,7 @@ A modded theme of [hugo-eureka](https://github.com/wangchucheng/hugo-eureka).
 - [ ] Change markdown style toward [Vue docs](https://vuejs.org/guide)
 - [ ] Remove fancy and useless features (e.g. ToC, mins-to-read)
   > It's good that the authors didn't put much trash in this theme. The last theme I use had more codes for useless features than for the basic functions.
+- [ ] Change top banner to PaperMod style (i.e. flat and non-pinned banner)
 - [ ] Change code highlights
 - [ ] Add FancyBox
 - [ ] Replace default fonts
