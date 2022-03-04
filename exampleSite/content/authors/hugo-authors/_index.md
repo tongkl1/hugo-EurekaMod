@@ -27,14 +27,14 @@ Nullam eleifend fringilla quam. Sed faucibus efficitur metus at rhoncus. Sed non
 
 ## Nunc magna est
 
-Donec porta:  
+Donec porta:
 - Aenean aliquam sapien id fermentum hendrerit.
 - Nullam quis augue id ante tempor suscipit sodales sed velit.
 - Sed at nulla consectetur, sodales nisl sed, luctus velit.
 - Morbi ornare purus at porttitor tristique.
 
-Gravida urna in: 
+Gravida urna in:
 - Maecenas blandit diam at massa hendrerit maximus.
 - Sed lacinia purus ac cursus tincidunt.
 - Maecenas posuere ante sed elit tempus porttitor.
-- Sed vel justo quis diam convallis hendrerit ac non mi. 
+- Sed vel justo quis diam convallis hendrerit ac non mi.

@@ -22,7 +22,7 @@ widget:
     position: left
     # Options: sm, md, lg and xl. Default is md.
     scale: md
-  
+
   background:
     # Options: primary, secondary, tertiary or any valid color value. Default is primary.
     color:
@@ -32,5 +32,5 @@ widget:
     # Options: center, top, right, bottom, left.
     position:
     # Options: fixed, local, scroll.
-    attachment: 
+    attachment:
 ---

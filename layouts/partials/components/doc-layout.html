@@ -12,7 +12,7 @@
             <div class="flex">
                 <div class="w-full lg:w-3/4 px-6">
                     {{ partial "components/post-article" . }}
-                    
+
                     {{ with .GetTerms "tags" }}
                     {{ partial "components/post-tags" . }}
                     {{ end }}
@@ -75,7 +75,7 @@
     <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
         <a class="{{ if eq .context.Permalink .permalink }}text-eureka{{ end }} hover:text-eureka"
             href="{{ .context.Permalink }}">{{ .context.LinkTitle }}</a>
-        
+
         {{ $versions := partial "get-versions" (dict "context" .context) }}
         {{ if $versions }}
         <div class="relative ms-2 cursor-pointer">

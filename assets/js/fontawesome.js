@@ -21,7 +21,7 @@
 {{- end -}}
 
 import {library, dom} from 'js/fontawesome/fontawesome-svg-core/index.es.js';
-  
+
 library.add(
   {{- delimit $flattenedIcons ", " -}}
 )

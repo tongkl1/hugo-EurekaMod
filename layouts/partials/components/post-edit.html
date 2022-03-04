@@ -8,7 +8,7 @@
     {{- else }}
       {{- $filePath = path.Join $contentDir .File.Path }}
     {{- end }}
-  
+
     {{- $repoEditURL := cond (ne $editMap.repoEditURL "") $editMap.repoEditURL .Site.Params.repoEditURL }}
     {{- $path := path.Join $repoEditURL $filePath }}
     {{- $path = replace $path "http:/" "http://" 1 }}
