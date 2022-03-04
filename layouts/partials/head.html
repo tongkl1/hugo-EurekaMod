@@ -50,11 +50,11 @@
 
 <meta name="generator" content="Hugo Eureka {{ .Site.Data.eureka.version }}" />
 
-{{- $eurekaCSS := resources.Get "css/eureka.css" | postCSS (dict "config" "./assets/css/postcss.config.js") | minify | fingerprint "sha384" }}
-<link rel="stylesheet" href="{{ $eurekaCSS.Permalink }}" integrity="{{ $eurekaCSS.Data.Integrity }}">
+{{- $eurekaCSS := resources.Get "css/eureka.css" | postCSS (dict "config" "./assets/css/postcss.config.js") | minify }}
+<link rel="stylesheet" href="{{ $eurekaCSS.Permalink }}">
 
-{{- $eurekaJS := resources.Get "js/eureka.js" | resources.ExecuteAsTemplate "js/eureka.js" . | minify | fingerprint "sha384" }}
-<script defer src="{{ $eurekaJS.Permalink }}" integrity="{{ $eurekaJS.Data.Integrity }}"></script>
+{{- $eurekaJS := resources.Get "js/eureka.js" | resources.ExecuteAsTemplate "js/eureka.js" . | minify }}
+<script defer src="{{ $eurekaJS.Permalink }}"></script>
 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload"
@@ -65,8 +65,8 @@
 
 {{/* highlight */}}
 {{- if eq .Site.Params.highlight.handler "chroma" }}
-{{- $highlightCSS := resources.Get "css/syntax.css" | minify | fingerprint "sha384" }}
-<link rel="stylesheet" href="{{ $highlightCSS.Permalink }}" integrity="{{ $highlightCSS.Data.Integrity }}" media="print" onload="this.media='all';this.onload=null">
+{{- $highlightCSS := resources.Get "css/syntax.css" | minify }}
+<link rel="stylesheet" href="{{ $highlightCSS.Permalink }}" media="print" onload="this.media='all';this.onload=null">
 {{- else if eq .Site.Params.highlight.handler "highlightjs" }}
 {{- $highlightjsStyle := .Site.Params.highlight.highlightjs.style | default "solarized-light" }}
 <link rel="stylesheet" href="{{ printf $assets.highlightjs.css.url $assets.highlightjs.version $highlightjsStyle }}"
@@ -80,8 +80,8 @@
 {{- end }}
 {{- end }}
 
-{{ $fontawesomeJS := resources.Get "js/fontawesome.js" | resources.ExecuteAsTemplate "js/fontawesome.js" . | js.Build (dict "minify" true) | minify | fingerprint "sha384" }}
-<script defer type="text/javascript" src="{{ $fontawesomeJS.Permalink }}" integrity="{{ $fontawesomeJS.Data.Integrity }}"></script>
+{{ $fontawesomeJS := resources.Get "js/fontawesome.js" | resources.ExecuteAsTemplate "js/fontawesome.js" . | js.Build (dict "minify" true) | minify }}
+<script defer type="text/javascript" src="{{ $fontawesomeJS.Permalink }}"></script>
 
 
 {{- $enableMath := false }}
