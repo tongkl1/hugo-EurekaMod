@@ -1,9 +1,5 @@
 readMore:
   other: Leer más
-readingTime:
-  other: '{{ .Count }} minutos de lectura'
-toc:
-  other: Tabla de Contenidos
 seriesOfPosts:
   other: Serie de Publicaciones
 previous:

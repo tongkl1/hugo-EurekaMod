@@ -22,9 +22,7 @@
 </script>
 {{- end }}
 
-{{/*  Deprecation warning(v1.0.0) starts */}}
 {{ $layout := partial "utils/hyphenate" (.Layout | default .Type) }}
-{{/*  Deprecation warning(v1.0.0) ends */}}
 {{- if and (eq .Type "docs") (ne $layout "doc-list") }}
 {{- partial "components/schema-page" . }}
 {{- else if or (eq .Kind "section") (eq .Kind "term") }}

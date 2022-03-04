@@ -1,7 +1,6 @@
 ---
 title: {{ replace .Name "-" " " | title }}
 description:
-toc: true
 authors: []
 tags: []
 categories: []

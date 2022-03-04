@@ -1,9 +1,5 @@
 readMore:
   other: Ler mais
-readingTime:
-  other: '{{ .Count }} minutos de leitura'
-toc:
-  other: Índice
 seriesOfPosts:
   other: Série de artigos
 previous:

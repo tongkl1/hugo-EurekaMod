@@ -1,9 +1,5 @@
 readMore:
   other: Read More
-readingTime:
-  other: '{{ .Count }} min read'
-toc:
-  other: Table of Contents
 seriesOfPosts:
   other: Series of Posts
 previous:

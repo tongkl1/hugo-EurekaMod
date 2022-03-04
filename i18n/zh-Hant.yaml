@@ -1,9 +1,5 @@
 readMore:
   other: 閱讀更多
-readingTime:
-  other: '{{ .Count }}分鐘閱讀'
-toc:
-  other: 目錄
 seriesOfPosts:
   other: 系列文章
 previous:

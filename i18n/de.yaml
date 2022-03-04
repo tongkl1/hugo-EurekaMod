@@ -1,9 +1,5 @@
 readMore:
   other: Mehr erfahren
-readingTime:
-  other: 'Lesezeit: {{ .Count }} min'
-toc:
-  other: Inhaltsverzeichnis
 seriesOfPosts:
   other: Reihe von Beiträgen
 previous:

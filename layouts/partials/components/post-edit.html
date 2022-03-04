@@ -19,22 +19,6 @@
       <span>{{ i18n "editThisPage" }}</span>
     </a>
   </div>
-{{/*  Deprecation warning(v1.0.0) starts */}}
-{{- else if .Site.Params.repoURL }}
-  {{ warnf "Param 'repoURL' in params.yaml is deprecated and will be removed in Eureka v1.0.0. See https://www.wangchucheng.com/en/docs/hugo-eureka/customization/#params-config-file" }}
-  <div class="flex md:justify-end my-4">
-    {{- $repoEditURL := path.Join .Site.Params.repoURL "/blob/master/" }}
-    {{ $contentDir := cond .Site.IsMultiLingual .Site.Params.contentDir "/content/" }}
-    {{ $path := path.Join $repoEditURL $contentDir .File.Path }}
-    {{ $path = replace $path "http:/" "http://" 1 }}
-    {{ $path = replace $path "https:/" "https://" 1 }}
-
-    <a href="{{ $path }}" title="Edit this page">
-      <i class="fas fa-edit me-1"></i>
-      <span>{{ i18n "editThisPage" }}</span>
-    </a>
-  </div>
-{{/*  Deprecation warning(v1.0.0) ends */}}
 {{- end }}
 
 {{ define "partials/get-edit-url" }}

@@ -1,13 +1,8 @@
 ---
 title: Featured Image
 description: Post with featured image.
-toc: true
 authors:
   - Example Author
-tags:
-  - image
-categories:
-  - themes
 series:
   - Themes Guide
 date: '2020-05-26'

@@ -1,9 +1,5 @@
 readMore:
   other: 더 보기
-readingTime:
-  other: "{{ .Count }} min 읽음"
-toc:
-  other: 목차
 seriesOfPosts:
   other: 같은 시리즈의 포스트
 prxevious:

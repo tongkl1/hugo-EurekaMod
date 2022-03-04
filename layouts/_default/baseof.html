@@ -2,20 +2,19 @@
 <html
   lang="{{ .Site.LanguageCode }}"
   dir="{{ .Site.Language.LanguageDirection | default "ltr" }}"
-  {{ if eq .Site.Params.colorScheme "dark" }}class="dark"{{ end }}
 >
   {{- partial "head" . }}
 
 
-  <body class="flex min-h-screen flex-col">
-    <header
-      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
-    >
+  <body class="flex min-h-screen flex-col"
+    {{ if eq .Site.Params.colorScheme "dark" }}class="dark"{{ end }}
+  >
+    <header class="min-h-16 pl-scrollbar z-50 flex w-full items-center">
       <div class="mx-auto w-full max-w-screen-xl">
         {{- partial "header" . -}}
       </div>
     </header>
-    <main class="grow pt-16">
+    <main class="grow">
       {{- if or .IsHome (and (eq .Type "authors") (eq .Kind "term")) }}
         {{- block "main" . }}{{- end }}
       {{- else }}

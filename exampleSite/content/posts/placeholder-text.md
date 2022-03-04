@@ -1,14 +1,9 @@
 ---
 title: Placeholder Text
 description: Lorem Ipsum Dolor Si Amet
-toc: true
 authors:
   - Hugo Authors
   - Example Author
-tags:
-  - markdown
-  - text
-categories:
 series:
   - Themes Guide
 date: '2019-03-09'

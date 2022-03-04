@@ -2,10 +2,7 @@ baseURL: /
 title: Eureka Demo
 
 # Uncomment when not installing with Hugo Modules
-# theme: eureka
-# Comment when not installing with Hugo Modules
-theme: wangchucheng.com/hugo-eureka
-# If you cannot access the Github mirror, you can also use the Gitee mirror: gitee.com/wangchucheng/hugo-eureka
+theme: EurekaMod
 
 paginate: 3
 copyright: >
@@ -36,10 +33,7 @@ markup:
       unsafe: true
 
 taxonomies:
-  category: categories
-  tag: tags
   series: series
-  author: authors
 
-build:
-  useResourceCacheWhen: always
+# build:
+#   useResourceCacheWhen: always

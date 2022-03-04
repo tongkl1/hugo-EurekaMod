@@ -1,9 +1,5 @@
 readMore:
   other: 続きを読む
-readingTime:
-  other: '{{ .Count }}分読む'
-toc:
-  other: 目次
 seriesOfPosts:
   other: シリーズ記事
 previous:

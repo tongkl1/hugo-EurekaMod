@@ -5,9 +5,9 @@ A modded theme of [hugo-eureka](https://github.com/wangchucheng/hugo-eureka).
 ## TODOs
 
 - [ ] Change markdown style toward [Vue docs](https://vuejs.org/guide)
-- [ ] Remove fancy and useless features (e.g. ToC, mins-to-read)
+- [x] Remove fancy and useless features (e.g. ToC, reading time)
   > It's good that the authors didn't put much trash in this theme. The last theme I use had more codes for useless features than for the basic functions.
-- [ ] Change top banner to PaperMod style (i.e. flat and non-pinned banner)
+- [x] Change top banner to PaperMod style (i.e. flat and non-pinned banner)
 - [ ] Change code highlights
 - [ ] Add FancyBox
 - [ ] Replace default fonts
@@ -17,6 +17,7 @@ A modded theme of [hugo-eureka](https://github.com/wangchucheng/hugo-eureka).
 - [ ] Remove useless requests if the function is not enabled (e.g. why loading Katex for every page?)
 - [ ] Store local copies of scripts instead of using CDNs
 - [ ] Add beian (备案) config
+- [ ] Minify generated HTML files
 - [ ] (Optional) Replace Katex with MathJax (just personal favor)
 
 > Below goes the original README.md

@@ -14,18 +14,14 @@
 {{ $prefix := "" }}
 {{ if .Params.Title }}
 {{ $prefix = .Params.Title }}
-{{/*  Deprecation warning(v1.0.0) starts */}}
 {{ $layout := partial "utils/hyphenate" (.Layout | default .Type) }}
-{{/*  Deprecation warning(v1.0.0) ends */}}
 {{ if and (eq .Type "docs") (ne $layout "doc-list") }}
 {{ $docTitle := "" }}
 {{ $bundles := partial "utils/get-bundles" . }}
 {{ range $bundles.Reverse }}
 {{ $version := findRE "v?(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?" (path.Base .Permalink) }}
-{{/*  Deprecation warning(v1.0.0) starts */}}
 {{ $parentLayout := partial "utils/hyphenate" (.Parent.Layout | default .Parent.Type) }}
 {{ $layout := partial "utils/hyphenate" (.Layout | default .Type) }}
-{{/*  Deprecation warning(v1.0.0) ends */}}
 {{ if and (eq $parentLayout "doc-list") (ne $layout "doc-list") }}
 {{ $docTitle = .Title }}
 {{ else if $version }}
