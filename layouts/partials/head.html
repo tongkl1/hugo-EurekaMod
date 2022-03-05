@@ -48,13 +48,11 @@
 {{ end }}
 <title>{{ partial "get-title" . }}</title>
 
-<meta name="generator" content="Hugo Eureka {{ .Site.Data.eureka.version }}" />
-
 {{- $eurekaCSS := resources.Get "css/eureka.css" | postCSS (dict "config" "./assets/css/postcss.config.js") | minify }}
-<link rel="stylesheet" href="{{ $eurekaCSS.Permalink }}">
+<link rel="stylesheet" href="{{ $eurekaCSS.RelPermalink }}">
 
 {{- $eurekaJS := resources.Get "js/eureka.js" | resources.ExecuteAsTemplate "js/eureka.js" . | minify }}
-<script defer src="{{ $eurekaJS.Permalink }}"></script>
+<script defer src="{{ $eurekaJS.RelPermalink }}"></script>
 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload"
@@ -66,7 +64,7 @@
 {{/* highlight */}}
 {{- if eq .Site.Params.highlight.handler "chroma" }}
 {{- $highlightCSS := resources.Get "css/syntax.css" | minify }}
-<link rel="stylesheet" href="{{ $highlightCSS.Permalink }}" media="print" onload="this.media='all';this.onload=null">
+<link rel="stylesheet" href="{{ $highlightCSS.RelPermalink }}" media="print" onload="this.media='all';this.onload=null">
 {{- else if eq .Site.Params.highlight.handler "highlightjs" }}
 {{- $highlightjsStyle := .Site.Params.highlight.highlightjs.style | default "solarized-light" }}
 <link rel="stylesheet" href="{{ printf $assets.highlightjs.css.url $assets.highlightjs.version $highlightjsStyle }}"
@@ -81,7 +79,7 @@
 {{- end }}
 
 {{ $fontawesomeJS := resources.Get "js/fontawesome.js" | resources.ExecuteAsTemplate "js/fontawesome.js" . | js.Build (dict "minify" true) | minify }}
-<script defer type="text/javascript" src="{{ $fontawesomeJS.Permalink }}"></script>
+<script defer type="text/javascript" src="{{ $fontawesomeJS.RelPermalink }}"></script>
 
 
 {{- $enableMath := false }}
@@ -153,8 +151,8 @@
 {{ partial "custom-head" . }}
 
 {{- with .Site.Params.icon }}
-<link rel="icon" type="image/png" sizes="32x32" href="{{ (partial "get-icon" (dict "icon" . "size" 32)).Permalink }}">
-<link rel="apple-touch-icon" sizes="180x180" href="{{ (partial "get-icon" (dict "icon" . "size" 180)).Permalink }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ (partial "get-icon" (dict "icon" . "size" 32)).RelPermalink }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ (partial "get-icon" (dict "icon" . "size" 180)).RelPermalink }}">
 {{- end }}
 
 {{ define "partials/get-icon" }}
@@ -164,7 +162,6 @@
 {{ end }}
 
 {{- partial "components/schema" . }}
-{{- partial "components/opengraph" . }}
 {{- range .AlternativeOutputFormats }}
-{{- printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+{{- printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .RelPermalink $.Site.Title | safeHTML }}
 {{- end }}
