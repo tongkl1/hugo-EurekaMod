@@ -32,6 +32,11 @@ markup:
     renderer:
       unsafe: true
 
+# # Uncomment if you don't want the taxonomy page
+# # Google `hugo taxonomy terms` for info on taxonomies and terms pages
+# disableKinds: ["taxonomy"]
+# ignoreErrors: ["error-disable-taxonomy"]
+
 taxonomies:
   series: series
 

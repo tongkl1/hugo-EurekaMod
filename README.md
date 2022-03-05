@@ -17,7 +17,7 @@ A modded theme of [hugo-eureka](https://github.com/wangchucheng/hugo-eureka).
 - [ ] Remove useless requests if the function is not enabled (e.g. why loading Katex for every page?)
 - [ ] Store local copies of scripts instead of using CDNs
 - [ ] Add beian (备案) config
-- [ ] Minify generated HTML files
+- [x] Minify generated HTML files (can be achieved by running `hugo --minify`)
 - [ ] (Optional) Replace Katex with MathJax (just personal favor)
 
 > Below goes the original README.md
