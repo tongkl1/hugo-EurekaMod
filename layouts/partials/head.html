@@ -48,16 +48,26 @@
 {{ end }}
 <title>{{ partial "get-title" . }}</title>
 
-{{- $eurekaCSS := resources.Get "css/eureka.css" | postCSS (dict "config" "./assets/css/postcss.config.js") | minify }}
+{{- $eurekaCSS := resources.Get "css/eureka.css" | postCSS (dict "config" "./assets/css/postcss.config.js") | resources.ExecuteAsTemplate "css/eureka.css" . | minify }}
 <link rel="stylesheet" href="{{ $eurekaCSS.RelPermalink }}">
 
 {{- $eurekaJS := resources.Get "js/eureka.js" | resources.ExecuteAsTemplate "js/eureka.js" . | minify }}
 <script defer src="{{ $eurekaJS.RelPermalink }}"></script>
 
+{{ $googleFonts := "" }}
+{{ range $index, $value := partial "utils/get-style-fonts" (dict "context" . "param" "googleFonts") }}
+{{ with $value }}
+{{ $googleFonts = print $googleFonts "family=" .  "&" }}
+{{ end }}
+{{ end }}
+
+{{ with $googleFonts }}
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload"
-  href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+  href="{{ printf "https://fonts.googleapis.com/css2?%sdisplay=swap" . }}"
   as="style" onload="this.onload=null;this.rel='stylesheet'">
+{{ end }}
 
 {{- $assets := .Site.Data.assets }}
 
