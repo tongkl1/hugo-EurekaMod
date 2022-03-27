@@ -6,6 +6,7 @@ authors:
 series:
 date: '2020-11-20T22:52:56+08:00'
 lastmod: '2020-11-20T22:52:56+08:00'
+enableMath: true
 featuredImage:
 draft: false
 ---

@@ -60,8 +60,8 @@
 {{- else if eq .Site.Params.highlight.handler "highlightjs" }}
 {{- $highlightjsStyle := .Site.Params.highlight.highlightjs.style | default "default" }}
 <link rel="stylesheet" href="{{ printf $assets.highlightjs.css.url $highlightjsStyle }}"
-  media="print" onload="this.media='all'" crossorigin>
-<script defer src="{{ $assets.highlightjs.js.url }}" crossorigin></script>
+  media="print" onload="this.media='all'">
+<script defer src="{{ $assets.highlightjs.js.url }}"></script>
 {{- end }}
 
 {{ $fontawesomeJS := resources.Get "js/fontawesome.js" | resources.ExecuteAsTemplate "js/fontawesome.js" . | js.Build (dict "minify" true) | minify }}
@@ -71,7 +71,6 @@
 {{- $enableMath := false }}
 {{- if .Site.Params.math.handler }}
   {{- $bundles := partial "utils/get-bundles" . }}
-  {{- $enableMath = true }}
   {{- range $bundles.Reverse }}
     {{- if and (ne .Params.enableMath nil) (ne .Params.enableMath "") }}
       {{- $enableMath = .Params.enableMath }}
@@ -105,8 +104,18 @@
 </script>
 {{- end }}
 
+{{- $enableDiagram := false }}
+{{- if .Site.Params.math.handler }}
+  {{- $bundles := partial "utils/get-bundles" . }}
+  {{- range $bundles.Reverse }}
+    {{- if and (ne .Params.enableDiagram nil) (ne .Params.enableDiagram "") }}
+      {{- $enableDiagram = .Params.enableDiagram }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+
 {{/*  Mermaid  */}}
-{{- if eq .Site.Params.diagram.handler "mermaid" }}
+{{- if and (eq .Site.Params.diagram.handler "mermaid") $enableDiagram }}
 <script defer src="{{ printf $assets.mermaid.js.url $assets.mermaid.version }}" crossorigin></script>
 {{- with .Site.Params.diagram.mermaid }}
 <script>
