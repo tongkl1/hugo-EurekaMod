@@ -4,7 +4,7 @@
   >
     <div>
       {{ with .NextInSection }}
-        <span class="text-primary-text block font-bold"
+        <span class="text-primary-text block"
           >{{ i18n "previous" }}</span
         >
         <a href="{{ .RelPermalink }}" class="block">{{ .LinkTitle }}</a>
@@ -12,7 +12,7 @@
     </div>
     <div class="mt-4 md:mt-0 md:text-right">
       {{ with .PrevInSection }}
-        <span class="text-primary-text block font-bold">{{ i18n "next" }}</span>
+        <span class="text-primary-text block">{{ i18n "next" }}</span>
         <a href="{{ .RelPermalink }}" class="block">{{ .LinkTitle }}</a>
       {{ end }}
     </div>
