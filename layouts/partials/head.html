@@ -53,7 +53,18 @@
 
 {{- $assets := .Site.Data.assets }}
 
+{{- $enableCodeHighlight := false }}
+{{- if .Site.Params.highlight.handler }}
+  {{- $bundles := partial "utils/get-bundles" . }}
+  {{- range $bundles.Reverse }}
+    {{- if and (ne .Params.enableCodeHighlight nil) (ne .Params.enableCodeHighlight "") }}
+      {{- $enableCodeHighlight = .Params.enableCodeHighlight }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+
 {{/* highlight */}}
+{{- if $enableCodeHighlight }}
 {{- if eq .Site.Params.highlight.handler "chroma" }}
 {{- $highlightCSS := resources.Get "css/syntax.css" | minify }}
 <link rel="stylesheet" href="{{ $highlightCSS.RelPermalink }}" media="print" onload="this.media='all'">
@@ -62,6 +73,7 @@
 <link rel="stylesheet" href="{{ printf $assets.highlightjs.css.url $highlightjsStyle }}"
   media="print" onload="this.media='all'">
 <script defer src="{{ $assets.highlightjs.js.url }}"></script>
+{{- end }}
 {{- end }}
 
 {{ $fontawesomeJS := resources.Get "js/fontawesome.js" | resources.ExecuteAsTemplate "js/fontawesome.js" . | js.Build (dict "minify" true) | minify }}
@@ -105,7 +117,7 @@
 {{- end }}
 
 {{- $enableDiagram := false }}
-{{- if .Site.Params.math.handler }}
+{{- if .Site.Params.diagram.handler }}
   {{- $bundles := partial "utils/get-bundles" . }}
   {{- range $bundles.Reverse }}
     {{- if and (ne .Params.enableDiagram nil) (ne .Params.enableDiagram "") }}

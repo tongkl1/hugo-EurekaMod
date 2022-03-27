@@ -7,6 +7,7 @@ series:
   - Themes Guide
 date: '2019-03-11'
 lastmod: '2019-03-11'
+enableCodeHighlight: true
 draft: false
 ---
 
