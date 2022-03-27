@@ -15,7 +15,7 @@
         {{ if gt $index 0 }}
           <span>, </span>
         {{ end -}}
-        <a href="{{ .Permalink }}" class="hover:text-eureka"
+        <a href="{{ .RelPermalink }}" class="hover:text-eureka"
           >{{ .LinkTitle }}</a
         >
       {{ end }}
@@ -29,7 +29,7 @@
         {{ if gt $index 0 }}
           <span>, </span>
         {{ end -}}
-        <a href="{{ .Permalink }}" class="hover:text-eureka"
+        <a href="{{ .RelPermalink }}" class="hover:text-eureka"
           >{{ .LinkTitle }}</a
         >
       {{ end }}

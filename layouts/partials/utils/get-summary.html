@@ -1,5 +1,5 @@
 <div class="prose">
-  <a href="{{ .Permalink }}" class="no-underline">
+  <a href="{{ .RelPermalink }}" class="no-underline">
     <h3 class="mt-0">{{ .LinkTitle }}</h3>
   </a>
   {{ if .Description }}
@@ -14,7 +14,7 @@
         {{ if gt $index 0 }}
           <div class="-mx-4 my-4 border-t"></div>
         {{ end -}}
-        <a href="{{ .Permalink }}" class="no-underline">
+        <a href="{{ .RelPermalink }}" class="no-underline">
           <h4>{{ .LinkTitle }}</h4>
         </a>
         {{ if .Description }}
@@ -23,7 +23,7 @@
           {{ .Summary | plainify | htmlUnescape }}
         {{ end }}
       {{ end }}
-      <a href="{{ .Permalink }}" class="no-underline">
+      <a href="{{ .RelPermalink }}" class="no-underline">
         <h4>
           {{ i18n "readMore" }}
           <i

@@ -6,11 +6,11 @@
 {{- end }}
 {{- end }}
 {{- if $validKeyword }}
-{{- $img = ((.context.Resources.ByType "image").GetMatch .keyword).Permalink }}
+{{- $img = ((.context.Resources.ByType "image").GetMatch .keyword).RelPermalink }}
 {{- else if or (hasPrefix .url "//") (or (hasPrefix .url "http://") (hasPrefix .url "https://")) }}
 {{- $img = (.url | absURL) }}
 {{- else if resources.GetMatch .url }}
-{{- $img = (resources.GetMatch .url).Permalink }}
+{{- $img = (resources.GetMatch .url).RelPermalink }}
 {{- else if .url }}
 {{- $img = (.url | absURL) }}
 {{- end }}

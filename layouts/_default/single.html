@@ -38,7 +38,7 @@
       >
         <h3>{{ i18n "seeAlso" }}</h3>
         {{ range . }}
-          <a href="{{ .Permalink }}" class="no-underline">{{ .LinkTitle }}</a>
+          <a href="{{ .RelPermalink }}" class="no-underline">{{ .LinkTitle }}</a>
           <br />
         {{ end }}
       </div>
