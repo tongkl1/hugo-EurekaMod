@@ -64,7 +64,7 @@
         document.addEventListener('DOMContentLoaded', () => 
           window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', switchDarkMode));
       }
-  
+
       document.addEventListener('DOMContentLoaded', () => {
         getColorScheme();
         switchBurger();
@@ -73,5 +73,28 @@
         {{- end }}
       });
     </script>
+    {{- if not .IsHome }}
+    <link rel="stylesheet" href="{{ .Site.Data.assets.fancybox.css.url }}">
+    <script src="{{ .Site.Data.assets.fancybox.js.url }}"></script>
+    <script>
+      document.querySelectorAll('main article img:not(.nofancybox)').forEach((el, key) => {
+        const alt = el.alt;
+        const src = el.src;
+        if (alt) {
+          const tmp = document.createElement('span');
+          tmp.classList.add('caption');
+          tmp.innerText = alt;
+          el.after(tmp);
+        }
+        const wrapper = document.createElement('a');
+        wrapper.setAttribute('href', src);
+        wrapper.setAttribute('title', alt);
+        wrapper.setAttribute('data-fancybox', 'gallery');
+        wrapper.setAttribute('rel', 'gallary' + key);
+        el.parentElement.insertBefore(wrapper, el);
+        wrapper.appendChild(el);
+      });
+    </script>
+    {{- end }}
   </body>
 </html>

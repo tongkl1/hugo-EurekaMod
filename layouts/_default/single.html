@@ -45,8 +45,17 @@
     {{ end }}
   </div>
 
+  {{- $enableCodeHighlight := false }}
+  {{- if .Site.Params.highlight.handler }}
+    {{- $bundles := partial "utils/get-bundles" . }}
+    {{- range $bundles.Reverse }}
+      {{- if and (ne .Params.enableCodeHighlight nil) (ne .Params.enableCodeHighlight "") }}
+        {{- $enableCodeHighlight = .Params.enableCodeHighlight }}
+      {{- end }}
+    {{- end }}
+  {{- end }}
   {{/* highlight */}}
-  {{- if eq .Site.Params.highlight.handler "highlightjs" }}
+  {{- if and (eq .Site.Params.highlight.handler "highlightjs") $enableCodeHighlight }}
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         hljs.initHighlightingOnLoad();

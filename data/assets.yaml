@@ -20,6 +20,13 @@ mermaid:
   js:
     url: /libs/mermaid.min.js
 
+# Fancybox
+fancybox:
+  css:
+    url: /libs/fancybox/fancybox.min.css
+  js:
+    url: /libs/fancybox/fancybox.min.js
+
 # Valine
 valine:
   version: 1.4.16

@@ -27,3 +27,11 @@
   border-top-color: var(--color-eureka);
   border-bottom-color: transparent;
 }
+
+.caption {
+  display: block;
+  font-size: .9em;
+  margin-top: .3em;
+  position: relative;
+  text-align: center;
+}

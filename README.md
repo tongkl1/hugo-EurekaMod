@@ -9,9 +9,9 @@ A modded theme of [hugo-eureka](https://github.com/wangchucheng/hugo-eureka).
   > It's good that the authors didn't put much trash in this theme. The last theme I use had more codes for useless features than for the basic functions.
 - [x] Change top banner to PaperMod style (i.e. flat and non-pinned banner)
 - [x] ~~Change code highlights~~
-- [ ] Add FancyBox
+- [x] Add FancyBox
 - [x] Replace default fonts
-- [ ] Streamline assets (like FontAwesome fonts)
+- [x] Streamline assets (like FontAwesome fonts)
 - [x] ~~Add more animations~~
 - [x] ~~Replace icons~~
 - [x] Remove useless requests if the function is not enabled (e.g. why load Katex for every page?)
