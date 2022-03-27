@@ -54,8 +54,8 @@
         document.querySelector('html').classList.add('dark');
       }
       {{- end }}
-      const dataIcon = (storageColorScheme === 'Auto' ? 'adjust' : (storageColorScheme === 'Dark' ? 'moon' : 'sun'));
-      if (storageColorScheme !== defaultTheme) {
+      const dataIcon = (storageColorScheme === 'Light' ? 'sun' : (storageColorScheme === 'Dark' ? 'moon' : 'adjust'));
+      if (storageColorScheme && storageColorScheme !== defaultTheme) {
         element.firstElementChild.classList.remove(toRemove);
         element.firstElementChild.setAttribute('data-icon', dataIcon);
         element.firstElementChild.classList.add('fa-' + dataIcon);
