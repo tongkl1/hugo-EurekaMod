@@ -1,5 +1,5 @@
 :root {
-  @apply bg-primary-bg text-secondary-text font-eureka;
+  @apply bg-secondary-bg text-secondary-text font-eureka;
   --color-eureka: {{ partial "utils/get-style-color" (dict "context" . "path" (slice "light" "theme")) }};
   --color-primary-bg: {{ partial "utils/get-style-color" (dict "context" . "path" (slice "light" "primaryBackground")) }};
   --color-secondary-bg: {{ partial "utils/get-style-color" (dict "context" . "path" (slice "light" "secondaryBackground")) }};
