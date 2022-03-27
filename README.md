@@ -14,8 +14,8 @@ A modded theme of [hugo-eureka](https://github.com/wangchucheng/hugo-eureka).
 - [ ] Streamline assets (like FontAwesome fonts)
 - [x] ~~Add more animations~~
 - [x] ~~Replace icons~~
-- [ ] Remove useless requests if the function is not enabled (e.g. why load Katex for every page?)
-- [ ] Store local copies of scripts instead of using CDNs
+- [x] Remove useless requests if the function is not enabled (e.g. why load Katex for every page?)
+- [x] Store local copies of scripts instead of using CDNs
 - [x] ~~Add beian (备案) config~~
 - [x] Minify generated HTML files (can be achieved by running `hugo --minify`)
 - [x] ~~(Optional) Replace Katex with MathJax (just personal favor)~~

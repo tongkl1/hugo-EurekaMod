@@ -97,10 +97,10 @@
 
 {{/*  KaTeX  */}}
 {{- if and (eq .Site.Params.math.handler "katex") $enableMath }}
-<link rel="stylesheet" href="{{ printf $assets.katex.css.url $assets.katex.version }}" media="print"
-  onload="this.media='all'" crossorigin>
-<script defer src="{{ printf $assets.katex.js.url $assets.katex.version }}" crossorigin></script>
-<script defer src="{{ printf $assets.katex.autoRender.url $assets.katex.version }}" crossorigin></script>
+<link rel="stylesheet" href="{{ $assets.katex.css.url }}" media="print"
+  onload="this.media='all'">
+<script defer src="{{ $assets.katex.js.url }}"></script>
+<script defer src="{{ $assets.katex.autoRender.url }}"></script>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     renderMathInElement(document.body, {
@@ -128,7 +128,7 @@
 
 {{/*  Mermaid  */}}
 {{- if and (eq .Site.Params.diagram.handler "mermaid") $enableDiagram }}
-<script defer src="{{ printf $assets.mermaid.js.url $assets.mermaid.version }}" crossorigin></script>
+<script defer src="{{ $assets.mermaid.js.url }}"></script>
 {{- with .Site.Params.diagram.mermaid }}
 <script>
   document.addEventListener("DOMContentLoaded", function () {

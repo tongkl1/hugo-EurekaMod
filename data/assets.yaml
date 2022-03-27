@@ -8,19 +8,17 @@ highlightjs:
 
 # KaTeX
 katex:
-  version: 0.15.2
   css:
-    url: https://cdn.jsdelivr.net/npm/katex@%s/dist/katex.min.css
+    url: /libs/katex/katex.min.css
   js:
-    url: https://cdn.jsdelivr.net/npm/katex@%s/dist/katex.min.js
+    url: /libs/katex/katex.min.js
   autoRender:
-    url: https://cdn.jsdelivr.net/npm/katex@%s/dist/contrib/auto-render.min.js
+    url: /libs/katex/contrib/auto-render.min.js
 
 # Mermaid
 mermaid:
-  version: 8.14.0
   js:
-    url: https://cdn.jsdelivr.net/npm/mermaid@%s/dist/mermaid.min.js
+    url: /libs/mermaid.min.js
 
 # Valine
 valine:
