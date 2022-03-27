@@ -1,7 +1,6 @@
 <div id="valine-comments" class="mt-4"></div>
 {{- $assets := .Site.Data.assets }}
-<script defer src="{{ printf $assets.valine.js.url $assets.valine.version }}" {{ with $assets.valine.js.sri }}
-  integrity="{{ . }}" {{ end }} crossorigin></script>
+<script defer src="{{ printf $assets.valine.js.url $assets.valine.version }}" crossorigin></script>
 {{- with .Site.Params.comment.valine }}
 <script>
   document.addEventListener("DOMContentLoaded", function () {

@@ -1,9 +1,7 @@
 # Normal(400), semibold(600), bold(700) font weight needed.
 fonts: 
-  - name: Lora
-    googleFonts: Lora:wght@400;600;700
+  - name: Lato
   - name: Noto Serif SC
-    googleFonts: Noto+Serif+SC:wght@400;600;700
 
 colors:
   light:

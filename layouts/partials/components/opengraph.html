@@ -1,0 +1,20 @@
+<meta property="og:title" content="{{ partial "get-title" . }}" />
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
+{{ $icon := partial "utils/get-image" (dict "context" . "url" .Site.Params.icon) }}
+{{ with $icon }}
+<meta property="og:image" content="{{ . }}">
+{{ end }}
+
+<meta property="og:url" content="{{ .Permalink }}" />
+
+{{ with .Description }}
+<meta property="og:description" content="{{ . }}" />
+{{ else }}
+{{if .IsPage}}
+<meta property="og:description" content="{{ .Summary }}" />
+{{ else }}
+{{ with .Site.Params.Description }}
+<meta property="og:description" content="{{ . }}" />
+{{ end }}
+{{ end }}
+{{ end }}

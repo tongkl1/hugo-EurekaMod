@@ -8,17 +8,17 @@ A modded theme of [hugo-eureka](https://github.com/wangchucheng/hugo-eureka).
 - [x] Remove fancy and useless features (e.g. ToC, reading time)
   > It's good that the authors didn't put much trash in this theme. The last theme I use had more codes for useless features than for the basic functions.
 - [x] Change top banner to PaperMod style (i.e. flat and non-pinned banner)
-- [ ] Change code highlights
+- [x] ~~Change code highlights~~
 - [ ] Add FancyBox
-- [ ] Replace default fonts
+- [x] Replace default fonts
 - [ ] Streamline assets (like FontAwesome fonts)
-- [ ] Add more animations
-- [ ] Replace icons
-- [ ] Remove useless requests if the function is not enabled (e.g. why loading Katex for every page?)
+- [x] ~~Add more animations~~
+- [x] ~~Replace icons~~
+- [ ] Remove useless requests if the function is not enabled (e.g. why load Katex for every page?)
 - [ ] Store local copies of scripts instead of using CDNs
-- [ ] Add beian (备案) config
+- [x] ~~Add beian (备案) config~~
 - [x] Minify generated HTML files (can be achieved by running `hugo --minify`)
-- [ ] (Optional) Replace Katex with MathJax (just personal favor)
+- [x] ~~(Optional) Replace Katex with MathJax (just personal favor)~~
 
 > Below goes the original README.md
 

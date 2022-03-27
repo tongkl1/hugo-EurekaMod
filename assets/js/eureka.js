@@ -2,7 +2,7 @@
 function enableMasonry() {
   window.onload = resizeAllGridItems();
   window.addEventListener('resize', resizeAllGridItems);
-  var imgs = document.getElementsByTagName('img');
+  const imgs = document.getElementsByTagName('img');
   for (let img of imgs) {
     imgLoad(img, resizeAllGridItems());
   }
@@ -34,10 +34,10 @@ function resizeAllGridItems() {
 
 //color components/schema
 function getColorScheme() {
-  let element = document.getElementById('lightDarkMode');
-  let targetDiv = document.getElementById('lightDarkOptions');
-  let targets = targetDiv.getElementsByTagName('span');
-  let screen = document.getElementById('is-open');
+  const element = document.getElementById('lightDarkMode');
+  const targetDiv = document.getElementById('lightDarkOptions');
+  const targets = targetDiv.getElementsByTagName('span');
+  const screen = document.getElementById('is-open');
 
   element.addEventListener('click', () => {
     targetDiv.classList.toggle('hidden');
@@ -46,9 +46,9 @@ function getColorScheme() {
 
   for (let target of targets) {
     target.addEventListener('click', () => {
-      let targetName = target.getAttribute('name');
-      let icon = switchMode(targetName);
-      let old_icon = element.firstElementChild.getAttribute('data-icon');
+      const targetName = target.getAttribute('name');
+      const icon = switchMode(targetName);
+      const old_icon = element.firstElementChild.getAttribute('data-icon');
       element.firstElementChild.setAttribute('data-icon', icon);
       element.firstElementChild.classList.remove('fa-' + old_icon);
       element.firstElementChild.classList.add('fa-' + icon);
@@ -62,7 +62,7 @@ function getColorScheme() {
   screen.addEventListener('click', () => {
     targetDiv.classList.toggle('hidden');
     screen.classList.toggle('hidden');
-  })
+  });
 }
 
 function switchMode(mode) {
@@ -98,8 +98,8 @@ function switchDarkMode(e) {
 
 //switch burger
 function switchBurger() {
-  let menuBtn = document.getElementById('navbar-btn');
-  let menu = document.getElementById('menu');
+  const menuBtn = document.getElementById('navbar-btn');
+  const menu = document.getElementById('menu');
   menuBtn.addEventListener('click', () => {
     menu.classList.toggle('hidden');
   });
@@ -107,10 +107,10 @@ function switchBurger() {
 
 //switch language
 function switchLanguage() {
-  let element = document.getElementById('languageMode');
-  let targetDiv = document.getElementById('languageOptions');
-  let targets = targetDiv.getElementsByTagName('a');
-  let screen = document.getElementById('is-open-lang');
+  const element = document.getElementById('languageMode');
+  const targetDiv = document.getElementById('languageOptions');
+  const targets = targetDiv.getElementsByTagName('a');
+  const screen = document.getElementById('is-open-lang');
 
   element.addEventListener('click', () => {
     targetDiv.classList.toggle('hidden');

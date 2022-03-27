@@ -2,13 +2,13 @@
 <html
   lang="{{ .Site.LanguageCode }}"
   dir="{{ .Site.Language.LanguageDirection | default "ltr" }}"
+  {{ if eq .Site.Params.colorScheme "dark" }}class="dark"{{ end }}
 >
-  {{- partial "head" . }}
+  <head>
+    {{- partial "head" . }}
+  </head>
 
-
-  <body class="flex min-h-screen flex-col"
-    {{ if eq .Site.Params.colorScheme "dark" }}class="dark"{{ end }}
-  >
+  <body class="flex min-h-screen flex-col">
     <header class="min-h-16 pl-scrollbar z-50 flex w-full items-center">
       <div class="mx-auto w-full max-w-screen-xl">
         {{- partial "header" . -}}
@@ -30,5 +30,48 @@
         {{- partial "footer" . -}}
       </div>
     </footer>
+    {{- $eurekaJS := resources.Get "js/eureka.js" | resources.ExecuteAsTemplate "js/eureka.js" . | minify }}
+    <script src="{{ $eurekaJS.RelPermalink }}"></script>
+    <script>
+      const storageColorScheme = localStorage.getItem('lightDarkMode');
+      const element = document.getElementById('lightDarkMode');
+      {{- if eq .Site.Params.colorScheme "light" }}
+      const defaultTheme = 'Light';
+      const toRemove = 'fa-sun';
+      if ((storageColorScheme === 'Auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) || storageColorScheme === 'Dark') {
+        document.querySelector('html').classList.add('dark');
+      }
+      {{- else if eq .Site.Params.colorScheme "dark" }}
+      const defaultTheme = 'Dark';
+      const toRemove = 'fa-moon';
+      if ((storageColorScheme === 'Auto' && window.matchMedia('(prefers-color-scheme: light)').matches) || storageColorScheme === 'Light') {
+        document.querySelector('html').classList.remove('dark');
+      }
+      {{- else }}
+      const defaultTheme = 'Auto';
+      const toRemove = 'fa-adjust';
+      if (((storageColorScheme === 'Auto' || storageColorScheme == null) && window.matchMedia('(prefers-color-scheme: dark)').matches) || storageColorScheme === 'Dark') {
+        document.querySelector('html').classList.add('dark');
+      }
+      {{- end }}
+      const dataIcon = (storageColorScheme === 'Auto' ? 'adjust' : (storageColorScheme === 'Dark' ? 'moon' : 'sun'));
+      if (storageColorScheme !== defaultTheme) {
+        element.firstElementChild.classList.remove(toRemove);
+        element.firstElementChild.setAttribute('data-icon', dataIcon);
+        element.firstElementChild.classList.add('fa-' + dataIcon);
+      }
+      if (storageColorScheme === 'Auto' || (defaultTheme === 'Auto' && storageColorScheme == null)) {
+        document.addEventListener('DOMContentLoaded', () => 
+          window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', switchDarkMode));
+      }
+  
+      document.addEventListener('DOMContentLoaded', () => {
+        getColorScheme();
+        switchBurger();
+        {{- if .IsTranslated }}
+        switchLanguage();
+        {{- end }}
+      });
+    </script>
   </body>
 </html>

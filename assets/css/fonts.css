@@ -1,0 +1,66 @@
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 400;
+  font-display: fallback;
+  src: url(/fonts/lato/lato-italic.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 600;
+  font-display: fallback;
+  src: url(/fonts/lato/lato-600italic.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 700;
+  font-display: fallback;
+  src: url(/fonts/lato/lato-700italic.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  font-display: fallback;
+  src: url(/fonts/lato/lato-regular.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 600;
+  font-display: fallback;
+  src: url(/fonts/lato/lato-600.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  font-display: fallback;
+  src: url(/fonts/lato/lato-700.woff2) format('woff2');
+}
+/* noto-serif-sc-regular - latin_chinese-simplified */
+@font-face {
+  font-family: 'Noto Serif SC';
+  font-style: normal;
+  font-weight: 400;
+  font-display: fallback;
+  src: url('/fonts/noto-serif-sc/noto-serif-sc-regular.woff2') format('woff2');
+}
+/* noto-serif-sc-600 - latin_chinese-simplified */
+@font-face {
+  font-family: 'Noto Serif SC';
+  font-style: normal;
+  font-weight: 600;
+  font-display: fallback;
+  src: url('/fonts/noto-serif-sc/noto-serif-sc-600.woff2') format('woff2');
+}
+/* noto-serif-sc-700 - latin_chinese-simplified */
+@font-face {
+  font-family: 'Noto Serif SC';
+  font-style: normal;
+  font-weight: 700;
+  font-display: fallback;
+  src: url('/fonts/noto-serif-sc/noto-serif-sc-700.woff2') format('woff2');
+}

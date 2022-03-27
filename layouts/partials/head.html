@@ -51,41 +51,17 @@
 {{- $eurekaCSS := resources.Get "css/eureka.css" | postCSS (dict "config" "./assets/css/postcss.config.js") | resources.ExecuteAsTemplate "css/eureka.css" . | minify }}
 <link rel="stylesheet" href="{{ $eurekaCSS.RelPermalink }}">
 
-{{- $eurekaJS := resources.Get "js/eureka.js" | resources.ExecuteAsTemplate "js/eureka.js" . | minify }}
-<script defer src="{{ $eurekaJS.RelPermalink }}"></script>
-
-{{ $googleFonts := "" }}
-{{ range $index, $value := partial "utils/get-style-fonts" (dict "context" . "param" "googleFonts") }}
-{{ with $value }}
-{{ $googleFonts = print $googleFonts "family=" .  "&" }}
-{{ end }}
-{{ end }}
-
-{{ with $googleFonts }}
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload"
-  href="{{ printf "https://fonts.googleapis.com/css2?%sdisplay=swap" . }}"
-  as="style" onload="this.onload=null;this.rel='stylesheet'">
-{{ end }}
-
 {{- $assets := .Site.Data.assets }}
 
 {{/* highlight */}}
 {{- if eq .Site.Params.highlight.handler "chroma" }}
 {{- $highlightCSS := resources.Get "css/syntax.css" | minify }}
-<link rel="stylesheet" href="{{ $highlightCSS.RelPermalink }}" media="print" onload="this.media='all';this.onload=null">
+<link rel="stylesheet" href="{{ $highlightCSS.RelPermalink }}" media="print" onload="this.media='all'">
 {{- else if eq .Site.Params.highlight.handler "highlightjs" }}
 {{- $highlightjsStyle := .Site.Params.highlight.highlightjs.style | default "default" }}
-<link rel="stylesheet" href="{{ printf $assets.highlightjs.css.url $assets.highlightjs.version $highlightjsStyle }}"
-  {{ with $assets.highlightjs.css.sri }} integrity="{{ . }}" {{ end }} media="print"
-  onload="this.media='all';this.onload=null" crossorigin>
-<script defer src="{{ printf $assets.highlightjs.js.url $assets.highlightjs.version }}"
-  {{ with $assets.highlightjs.js.sri }} integrity="{{ . }}" {{ end }} crossorigin></script>
-{{- range .Site.Params.highlight.highlightjs.languages }}
-  <script defer src="{{ printf $assets.highlightjs.languages.url $assets.highlightjs.version . }}"
-    {{ with $assets.highlightjs.languages.sri }} integrity="{{ . }}" {{ end }} crossorigin></script>
-{{- end }}
+<link rel="stylesheet" href="{{ printf $assets.highlightjs.css.url $highlightjsStyle }}"
+  media="print" onload="this.media='all'" crossorigin>
+<script defer src="{{ $assets.highlightjs.js.url }}" crossorigin></script>
 {{- end }}
 
 {{ $fontawesomeJS := resources.Get "js/fontawesome.js" | resources.ExecuteAsTemplate "js/fontawesome.js" . | js.Build (dict "minify" true) | minify }}
@@ -110,13 +86,10 @@
 
 {{/*  KaTeX  */}}
 {{- if and (eq .Site.Params.math.handler "katex") $enableMath }}
-<link rel="stylesheet" href="{{ printf $assets.katex.css.url $assets.katex.version }}"
-  {{ with $assets.katex.css.sri }} integrity="{{ . }}" {{ end }} media="print"
-  onload="this.media='all';this.onload=null" crossorigin>
-<script defer src="{{ printf $assets.katex.js.url $assets.katex.version }}" {{ with $assets.katex.js.sri }}
-  integrity="{{ . }}" {{ end }} crossorigin></script>
-<script defer src="{{ printf $assets.katex.autoRender.url $assets.katex.version }}"
-  {{ with $assets.katex.autoRender.sri }} integrity="{{ . }}" {{ end }} crossorigin></script>
+<link rel="stylesheet" href="{{ printf $assets.katex.css.url $assets.katex.version }}" media="print"
+  onload="this.media='all'" crossorigin>
+<script defer src="{{ printf $assets.katex.js.url $assets.katex.version }}" crossorigin></script>
+<script defer src="{{ printf $assets.katex.autoRender.url $assets.katex.version }}" crossorigin></script>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     renderMathInElement(document.body, {
@@ -134,8 +107,7 @@
 
 {{/*  Mermaid  */}}
 {{- if eq .Site.Params.diagram.handler "mermaid" }}
-<script defer src="{{ printf $assets.mermaid.js.url $assets.mermaid.version }}" {{ with $assets.mermaid.js.sri }}
-  integrity="{{ . }}" {{ end }} crossorigin></script>
+<script defer src="{{ printf $assets.mermaid.js.url $assets.mermaid.version }}" crossorigin></script>
 {{- with .Site.Params.diagram.mermaid }}
 <script>
   document.addEventListener("DOMContentLoaded", function () {
@@ -172,6 +144,7 @@
 {{ end }}
 
 {{- partial "components/schema" . }}
+{{- partial "components/opengraph" . }}
 {{- range .AlternativeOutputFormats }}
 {{- printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .RelPermalink $.Site.Title | safeHTML }}
 {{- end }}

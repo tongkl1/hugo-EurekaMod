@@ -42,3 +42,7 @@ taxonomies:
 
 # build:
 #   useResourceCacheWhen: always
+
+staticDir:
+  - themes/EurekaMod/static
+  - static
