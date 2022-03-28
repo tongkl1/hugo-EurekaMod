@@ -1,5 +1,5 @@
 # Normal(400), semibold(600), bold(700) font weight needed.
-fonts: 
+fonts:
   - name: Lato
   - name: Noto Serif SC
 

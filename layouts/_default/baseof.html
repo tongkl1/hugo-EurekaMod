@@ -61,7 +61,7 @@
         element.firstElementChild.classList.add('fa-' + dataIcon);
       }
       if (storageColorScheme === 'Auto' || (defaultTheme === 'Auto' && storageColorScheme == null)) {
-        document.addEventListener('DOMContentLoaded', () => 
+        document.addEventListener('DOMContentLoaded', () =>
           window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', switchDarkMode));
       }
 

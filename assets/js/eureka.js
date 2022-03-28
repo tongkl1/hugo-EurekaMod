@@ -66,7 +66,7 @@ function getColorScheme() {
 }
 
 function switchMode(mode) {
-  let icon = ''
+  let icon = '';
   switch (mode) {
     case 'Light':
       window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', switchDarkMode);
