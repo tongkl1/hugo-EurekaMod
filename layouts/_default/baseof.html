@@ -9,6 +9,23 @@
   </head>
 
   <body class="flex min-h-screen flex-col">
+    {{/* Switch theme at the very beginning of page loading to avoid white screen flashing */}}
+    <script>
+      const storageColorScheme = localStorage.getItem('lightDarkMode');
+      {{- if eq .Site.Params.colorScheme "light" }}
+      if ((storageColorScheme === 'Auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) || storageColorScheme === 'Dark') {
+        document.querySelector('html').classList.add('dark');
+      }
+      {{- else if eq .Site.Params.colorScheme "dark" }}
+      if ((storageColorScheme === 'Auto' && window.matchMedia('(prefers-color-scheme: light)').matches) || storageColorScheme === 'Light') {
+        document.querySelector('html').classList.remove('dark');
+      }
+      {{- else }}
+      if (((storageColorScheme === 'Auto' || storageColorScheme == null) && window.matchMedia('(prefers-color-scheme: dark)').matches) || storageColorScheme === 'Dark') {
+        document.querySelector('html').classList.add('dark');
+      }
+      {{- end }}
+    </script>
     <header class="min-h-16 pl-scrollbar z-50 flex w-full items-center">
       <div class="mx-auto w-full max-w-screen-xl">
         {{- partial "header" . -}}
@@ -33,26 +50,16 @@
     {{- $eurekaJS := resources.Get "js/eureka.js" | resources.ExecuteAsTemplate "js/eureka.js" . | minify }}
     <script src="{{ $eurekaJS.RelPermalink }}"></script>
     <script>
-      const storageColorScheme = localStorage.getItem('lightDarkMode');
       const element = document.getElementById('lightDarkMode');
       {{- if eq .Site.Params.colorScheme "light" }}
       const defaultTheme = 'Light';
       const toRemove = 'fa-sun';
-      if ((storageColorScheme === 'Auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) || storageColorScheme === 'Dark') {
-        document.querySelector('html').classList.add('dark');
-      }
       {{- else if eq .Site.Params.colorScheme "dark" }}
       const defaultTheme = 'Dark';
       const toRemove = 'fa-moon';
-      if ((storageColorScheme === 'Auto' && window.matchMedia('(prefers-color-scheme: light)').matches) || storageColorScheme === 'Light') {
-        document.querySelector('html').classList.remove('dark');
-      }
       {{- else }}
       const defaultTheme = 'Auto';
       const toRemove = 'fa-adjust';
-      if (((storageColorScheme === 'Auto' || storageColorScheme == null) && window.matchMedia('(prefers-color-scheme: dark)').matches) || storageColorScheme === 'Dark') {
-        document.querySelector('html').classList.add('dark');
-      }
       {{- end }}
       const dataIcon = (storageColorScheme === 'Light' ? 'sun' : (storageColorScheme === 'Dark' ? 'moon' : 'adjust'));
       if (storageColorScheme && storageColorScheme !== defaultTheme) {
@@ -64,7 +71,6 @@
         document.addEventListener('DOMContentLoaded', () =>
           window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', switchDarkMode));
       }
-
       document.addEventListener('DOMContentLoaded', () => {
         getColorScheme();
         switchBurger();
