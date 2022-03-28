@@ -1,7 +1,9 @@
 <article class="prose">
   <h1 class="mb-4 font-normal">{{ .Title }}</h1>
 
-  {{ partial "components/post-metadata" . }}
+  {{ if ne .Params.noMetadata true }}
+    {{ partial "components/post-metadata" . }}
+  {{ end }}
 
   {{ $featured := partial "utils/get-featured" . }}
   {{ with $featured }}
