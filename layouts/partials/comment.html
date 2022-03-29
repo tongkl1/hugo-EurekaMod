@@ -12,6 +12,6 @@
 {{- end }}
 {{- end }}
 
-{{ if $enableComment }}
+{{ if and $enableComment (ne .Params.disableComment true) }}
   {{ partial (printf "comment/%s" $commentHandler) . }}
 {{ end }}
