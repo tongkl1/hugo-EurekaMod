@@ -1,4 +1,4 @@
-{{ if or .PrevInSection .NextInSection }}
+{{ if and (ne .Params.singlePage true) (or .PrevInSection .NextInSection) }}
   <div
     class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
   >

@@ -1,7 +1,7 @@
 <article class="prose">
   <h1 class="mb-4 font-normal">{{ .Title }}</h1>
 
-  {{ if ne .Params.noMetadata true }}
+  {{ if ne .Params.singlePage true }}
     {{ partial "components/post-metadata" . }}
   {{ end }}
 
