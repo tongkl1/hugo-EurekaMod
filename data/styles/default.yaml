@@ -5,7 +5,7 @@ fonts:
 
 colors:
   light:
-    theme: "#39c5bb"
+    theme: "#1d9bf0"
     primaryBackground: "#f2f2f7"
     secondaryBackground: "#fff"
     tertiaryBackground: "#f2f2f7"
