@@ -128,3 +128,15 @@ function switchLanguage() {
     screen.classList.toggle('hidden');
   });
 }
+
+if (storageColorScheme === 'Auto' || (defaultTheme === 'Auto' && storageColorScheme == null)) {
+  document.addEventListener('DOMContentLoaded', () =>
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', switchDarkMode));
+}
+document.addEventListener('DOMContentLoaded', () => {
+  getColorScheme();
+  switchBurger();
+  {{- if .IsTranslated }}
+  switchLanguage();
+  {{- end }}
+});
