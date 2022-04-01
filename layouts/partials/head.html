@@ -155,7 +155,10 @@
 
 {{- with .Site.Params.icon }}
 <link rel="icon" type="image/png" sizes="32x32" href="{{ (partial "get-icon" (dict "icon" . "size" 32)).RelPermalink }}">
-<link rel="apple-touch-icon" sizes="180x180" href="{{ (partial "get-icon" (dict "icon" . "size" 180)).RelPermalink }}">
+<link rel="icon" type="image/png" sizes="48x48" href="{{ (partial "get-icon" (dict "icon" . "size" 48)).RelPermalink }}">
+<link rel="icon" type="image/png" sizes="192x192" href="{{ (partial "get-icon" (dict "icon" . "size" 192)).RelPermalink }}">
+<link rel="apple-touch-icon" type="image/png" sizes="167x167" href="{{ (partial "get-icon" (dict "icon" . "size" 167)).RelPermalink }}">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="{{ (partial "get-icon" (dict "icon" . "size" 180)).RelPermalink }}">
 {{- end }}
 
 {{ define "partials/get-icon" }}
