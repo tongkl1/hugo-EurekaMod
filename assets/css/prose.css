@@ -2,10 +2,6 @@
   @apply max-w-full break-words;
 }
 
-.prose img {
-  margin: 0 auto;
-}
-
 .prose .katex {
   @apply overflow-x-auto overflow-y-hidden;
 }

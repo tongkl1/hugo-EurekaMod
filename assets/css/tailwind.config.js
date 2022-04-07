@@ -67,6 +67,15 @@ module.exports = {
             "--tw-prose-pre-bg": theme("colors.tertiary-bg"),
             "--tw-prose-th-borders": theme("colors.tertiary-bg"),
             "--tw-prose-td-borders": theme("colors.tertiary-bg"),
+            "blockquote p:first-of-type::before": {
+              content: "none"
+            },
+            "blockquote p:last-of-type::after": {
+              content: "none"
+            },
+            "img": {
+              margin: "0 auto"
+            }
           },
         },
       }),
