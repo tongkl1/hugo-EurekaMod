@@ -1,0 +1,12 @@
+{{- if and (not .Page.IsHome) (not .Page.Params.noFancyBox) }}
+{{- $alt := .Text | safeHTML }}
+{{- $title := $alt }}
+<a href="{{ .Destination | safeURL }}"{{ with $title }} title="{{ $title }}"{{ end }} data-fancybox="gallery">
+  <img src="{{ .Destination | safeURL }}"{{ with $alt }} alt="{{ . }}"{{ end }}{{ with $title }} title="{{ . }}"{{ end }}>
+</a>
+{{ with $title }}
+<span class="caption">{{ . }}</span>
+{{ end }}
+{{- else }}
+<img src="{{ .Destination | safeURL }}"{{ with .Text }} alt="{{ . | safeHTML }}"{{ end }}{{ with .Title }} title="{{ . | safeHTML }}"{{ end }}>
+{{- end }}
