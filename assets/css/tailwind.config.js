@@ -73,6 +73,19 @@ module.exports = {
             "blockquote p:last-of-type::after": {
               content: "none"
             },
+            "code": {
+              "background-color": "var(--color-tertiary-bg)",
+              "border-radius": ".25rem",
+              "padding": ".25rem",
+              "font-weight": "inherit",
+              "line-height": "1.25"
+            },
+            "code::before": {
+              content: "none"
+            },
+            "code::after": {
+              content: "none"
+            },
             "img": {
               margin: "0 auto"
             }
