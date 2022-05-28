@@ -53,6 +53,13 @@
 
 {{- $assets := .Site.Data.assets }}
 
+{{/* Search */}}
+{{- if (eq .Layout `search`) }}
+<link rel="preload" as="fetch" href="/index.json" crossorigin="anonymous">
+{{- $searchJS := resources.Get "js/search.js" | js.Build (dict "minify" true) | minify }}
+<script defer src="{{ $searchJS.RelPermalink }}"></script>
+{{- end }}
+
 {{- $enableCodeHighlight := false }}
 {{- if .Site.Params.highlight.handler }}
   {{- $bundles := partial "utils/get-bundles" . }}
@@ -77,7 +84,7 @@
 {{- end }}
 
 {{ $fontawesomeJS := resources.Get "js/fontawesome.js" | resources.ExecuteAsTemplate "js/fontawesome.js" . | js.Build (dict "minify" true) | minify }}
-<script defer type="text/javascript" src="{{ $fontawesomeJS.RelPermalink }}"></script>
+<script defer src="{{ $fontawesomeJS.RelPermalink }}"></script>
 
 
 {{- $enableMath := false }}

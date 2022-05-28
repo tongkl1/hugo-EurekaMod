@@ -19,6 +19,9 @@
 {{ $fasIcons = $fasIcons | append (partial "utils/camelize" "fa-user") }}
 {{ $fasIcons = $fasIcons | append (partial "utils/camelize" "fa-user-circle") }}
 
+{{/* search */}}
+{{ $fasIcons = $fasIcons | append (partial "utils/camelize" "fa-search") }}
+
 {{/* authors */}}
 {{ range (.Site.GetPage "taxonomyTerm" "authors").Pages }}
   {{ range .Params.social }}

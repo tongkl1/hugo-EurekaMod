@@ -5,3 +5,6 @@ main:
   - name: Series
     url: '/series/'
     weight: 2
+  # - name: Search
+  #   url: '/search/'
+  #   weight: 3

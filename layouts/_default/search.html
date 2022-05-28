@@ -1,0 +1,16 @@
+{{- define "main" }}
+<div class="lg:w-3/4 mx-auto px-6 lg:px-4 py-4 md:pb-8 lg:py-12">
+  <article class="prose my-4">
+    <h1 class="mb-4 font-normal">{{ .Title }}</h1>
+    <div class="search-box-wrapper">
+      <div>
+        <div class="search-icon-wrapper"><i class="fas fa-search"></i></div>
+        <input type="search" id="search-box" autofocus autocomplete="off">
+      </div>
+    </div>
+    <div id="result-title"></div>
+    <div class="overflow-hidden divide-y" id="result-list">
+    </div>
+  </article>
+</div>
+{{- end }}

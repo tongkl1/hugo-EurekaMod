@@ -35,3 +35,38 @@
   position: relative;
   text-align: center;
 }
+
+.search-box-wrapper {
+  height: 44px;
+  width: 100%;
+  border: 1px solid var(--color-tertiary-text);
+  border-radius: 24px;
+  display: flex;
+}
+
+.search-box-wrapper > div {
+  padding: 0px 20px 0 14px;
+  display: flex;
+  flex: 1;
+}
+
+.search-icon-wrapper {
+  display: flex;
+  align-items: center;
+  padding-right: 13px;
+}
+
+#search-box {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+#search-box:focus {
+  outline: 0;
+}
+
+#result-title {
+  margin-top: 20px;
+  color: var(--color-tertiary-text);
+}

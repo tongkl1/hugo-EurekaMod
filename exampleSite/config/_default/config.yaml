@@ -43,6 +43,12 @@ taxonomies:
 # build:
 #   useResourceCacheWhen: always
 
+outputs:
+  home:
+    - HTML
+    - RSS  # Comment this if you don't want RSS generation
+    # - JSON  # Uncomment this if you want search function
+
 staticDir:
   - themes/EurekaMod/static
   - static
