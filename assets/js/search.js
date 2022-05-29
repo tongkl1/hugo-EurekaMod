@@ -10,6 +10,7 @@ class Search {
   static searchText(keywords, text) {
     const matches = [];
     const wordSet = new Set();
+    text = text.toLowerCase();
     for (const keyword of keywords) {
       const wordLen = keyword.length;
       if (wordLen === 0) {
@@ -67,7 +68,7 @@ class Search {
   }
   doSearch(searchInput) {
     searchInput = searchInput.toLowerCase();
-    const keywords = searchInput.split(/[-\s]+/);
+    const keywords = [...new Set(searchInput.split(/[-\s]+/))];
     if (keywords.length === 1 && !keywords[0]) {
       return [];
     }
@@ -76,7 +77,7 @@ class Search {
     for (const { title, summary, content, permalink, series } of data) {
       const { matches: titleMatches, wordSet: titleWordSet } = Search.searchText(keywords, title);
       const { matches: contentMatches, wordSet: contentWordSet } = Search.searchText(keywords, content);
-      const hitCount = titleMatches.length + contentMatches.length;
+      const hitCount = titleMatches.length * 10 + contentMatches.length;
       if (hitCount === 0) {
         continue;
       }
@@ -107,6 +108,27 @@ Search.TAGS_TO_REPLACE = {
   const searchBox = document.getElementById('search-box');
   const resultTitle = document.getElementById('result-title');
   const resultList = document.getElementById('result-list');
+  function updateQueryString(input) {
+    const pageURL = new URL(window.location.toString());
+    if (input) {
+      pageURL.searchParams.set('keyword', input);
+    }
+    else {
+      pageURL.searchParams.delete('keyword');
+    }
+    window.history.replaceState('', '', pageURL.toString());
+  }
+  function handleQueryString() {
+    const pageURL = new URL(window.location.toString());
+    const keywords = pageURL.searchParams.get('keyword');
+    searchBox.value = keywords || '';
+    if (keywords) {
+      makeSearch(keywords);
+    }
+    else {
+      clear();
+    }
+  }
   function clear() {
     resultList.innerHTML = '';
     resultTitle.innerText = '';
@@ -114,18 +136,7 @@ Search.TAGS_TO_REPLACE = {
   function render(item) {
     const element = document.createElement('div');
     element.className = 'py-6';
-    element.innerHTML = `
-  <div class="flex flex-col-reverse lg:flex-row justify-between">
-    <div class="w-full">
-    <div class="prose">
-      <a href="${item.url}" class="no-underline">
-      <h3 class="mt-0">${item.title}</h3>
-      </a>
-      ${item.excerpt}
-    </div>
-    </div>
-  </div>
-  `;
+    element.innerHTML = `<div class="flex flex-col-reverse lg:flex-row justify-between"><div class="w-full"><div class="prose"><a href="${item.url}" class="no-underline"><h3 class="mt-0">${item.title}</h3></a>${item.excerpt}</div></div></div>`;
     return element;
   }
   let lastSearch = '';
@@ -134,14 +145,15 @@ Search.TAGS_TO_REPLACE = {
       return;
     }
     input = input.trim();
-    if (input === '') {
-      clear();
-      return;
-    }
+    updateQueryString(input);
     if (lastSearch === input) {
       return;
     }
     lastSearch = input;
+    if (input === '') {
+      clear();
+      return;
+    }
     const startTime = performance.now();
     const results = engine.doSearch(input);
     clear();
@@ -153,6 +165,10 @@ Search.TAGS_TO_REPLACE = {
   }
   window.addEventListener('load', function () {
     engine.fetchData().then(() => makeSearch(searchBox.value));
-    searchBox.onkeyup = () => makeSearch(searchBox.value);
+    searchBox.addEventListener('input', () => makeSearch(searchBox.value));
+    handleQueryString();
+    window.addEventListener('popstate', () => {
+      handleQueryString();
+    });
   });
 })();

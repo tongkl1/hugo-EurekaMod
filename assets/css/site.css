@@ -57,6 +57,7 @@
 }
 
 #search-box {
+  background-color: inherit;
   display: flex;
   flex: 1;
   flex-wrap: wrap;
